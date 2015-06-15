@@ -18,19 +18,47 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
+            url = "jdbc:mysql://127.0.0.1:8889/sales?useUnicode=yes&characterEncoding=UTF-8&autoReconnect=true"
+          username = "root"
+          password = "root"
+          dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
+
+          driverClassName = "com.mysql.jdbc.Driver"
+          dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
+          pooled = true
+          
+          properties {
+            maxActive = 20
+            maxIdle = 10
+            minIdle = 5
+            initialSize = 10
+            
+            timeBetweenEvictionRunsMillis = 1000 * 60 * 1 // 1 minutes
+            numTestsPerEvictionRun = 10
+            minEvictableIdleTimeMillis = 1000 * 60 * 10 // To prevent instances to sit idle in the pool more than 10 mintures
+                     
+            // Remove abandoned connections (not closed)
+            removeAbandoned = true
+            removeAbandonedTimeout = 60 * 15 // 15 minutes
+     
+            maxWait = 100l
+            
+            validationQuery = "select 1 from dual"
+            testOnBorrow = false
+            testOnReturn = false
+            testWhileIdle = true
+           }
         }
     }
     test {
         dataSource {
-            dbCreate = "update"
+            dbCreate = "create-drop"
             url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
         }
     }
     production {
         dataSource {
-            dbCreate = "update"
+            dbCreate = "create-drop"
             url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
             properties {
                // See http://grails.org/doc/latest/guide/conf.html#dataSource for documentation

@@ -1,0 +1,1 @@
+<g:select name="clientName" from="${Client.list()}" value="name" />

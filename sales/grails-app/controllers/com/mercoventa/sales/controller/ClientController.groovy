@@ -8,7 +8,5 @@ class ClientController {
 
 	static layout = 'main'
 
-    def index() {
-    	render (template:'client')
-    }
+    def index() { }
 }

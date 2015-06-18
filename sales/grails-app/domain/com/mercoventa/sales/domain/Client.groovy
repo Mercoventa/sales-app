@@ -15,4 +15,16 @@ class Client {
     static mapping = {
         id name:'clientId', generator:'assigned'
     }
+
+    String toString () {
+        "Client: {client_id:${clientId}, name:${name}, trade_name:${tradeName}}"
+    }
+
+    boolean equals (other) {
+        other && other in Client && other.clientId == clientId
+    }
+
+    int hashCode () {
+        clientId.hashCode()
+    }
 }

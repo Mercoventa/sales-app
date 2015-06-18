@@ -21,7 +21,7 @@ environments {
             url = "jdbc:mysql://127.0.0.1:8889/sales?useUnicode=yes&characterEncoding=UTF-8&autoReconnect=true"
           username = "root"
           password = "root"
-          dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
+          dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
 
           driverClassName = "com.mysql.jdbc.Driver"
           dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"

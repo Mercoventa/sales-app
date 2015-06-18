@@ -2,6 +2,7 @@
 <html ng-app="sales">
   <head>
     <r:require modules="salesApp"/>
+    <r:layoutResources/>
   </head>
   <body>
     <script type="text/ng-template" id="customTemplate.html">
@@ -10,7 +11,7 @@
           <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
       </a>
     </script>
-    <div class='container-fluid' ng-controller="TypeaheadCtrl">
+    <div class='container-fluid' ng-controller="MainCtrl">
 
         <h4>Static arrays</h4>
         <pre>Model: {{selected | json}}</pre>
@@ -25,5 +26,6 @@
         <pre>Model: {{customSelected | json}}</pre>
         <input type="text" ng-model="customSelected" placeholder="Custom template" typeahead="state as state.name for state in statesWithFlags | filter:{name:$viewValue}" typeahead-template-url="customTemplate.html" class="form-control">
     </div>
+  <r:layoutResources/>
   </body>
 </html>

@@ -9,4 +9,8 @@ class ClientController {
 	static layout = 'main'
 
     def index() { }
+
+    def get() {
+    	
+    }
 }

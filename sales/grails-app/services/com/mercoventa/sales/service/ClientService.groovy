@@ -11,11 +11,19 @@ class ClientService {
     }
 
     def findByName(clientName) {
-    	Client.findByName(clientName)
+    	Client.findAllByName(clientName)
     }
 
     def findByTradeName(clientTradeName) {
-    	Client.findByTradeName(clientTradeName)
+    	Client.findAllByTradeName(clientTradeName)
+    }
+
+    def findByNameLike(clientName) {
+        Client.findAllByNameIlike("%${clientName}%")
+    }
+
+    def findByTradeNameLike(clientTradeName) {
+        Client.findAllByTradeNameIlike("%${clientTradeName}%")
     }
 
     def createClient(clientData) {

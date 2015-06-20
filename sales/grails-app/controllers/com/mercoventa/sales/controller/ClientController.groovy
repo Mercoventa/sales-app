@@ -18,7 +18,6 @@ class ClientController {
     def getByName() {
 
     	def clients = clientService.findByNameLike(params.clientName)
-    	clients = clients ?: clientService.getAllClients()
 
     	render(contentType: "application/json") {
     		[count:clients?.size(), results:clients]

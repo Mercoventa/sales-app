@@ -18,7 +18,6 @@ class ProductController {
     def getByName() {
 
     	def products = productService.findByNameLike(params.productName)
-    	products = products ?: productService.getAllProducts()
 
     	render(contentType: "application/json") {
     		[count:products?.size(), results:products]

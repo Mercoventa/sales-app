@@ -26,6 +26,8 @@ environments {
           driverClassName = "com.mysql.jdbc.Driver"
           dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
           pooled = true
+
+          logSql = true
           
           properties {
             maxActive = 20

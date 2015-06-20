@@ -15,7 +15,8 @@ class ProductService {
     }
 
     def findByNameLike(productName) {
-        Product.findAllByNameIlike("%${productName}%")
+        def split = productName.split(' ').join('%')
+        Product.findAllByNameIlike("%${split}%", [max:10])
     }
 
     def createProduct(productData) {
